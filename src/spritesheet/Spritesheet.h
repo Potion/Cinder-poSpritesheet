@@ -15,10 +15,14 @@
 class Spritesheet;
 typedef std::shared_ptr<Spritesheet> SpritesheetRef;
 
-class Spritesheet {
+class Spritesheet
+: public std::enable_shared_from_this<Spritesheet>
+{
 public:
 	static SpritesheetRef create(ci::gl::TextureRef texture, ci::JsonTree json);
 	~Spritesheet();
+	
+	typedef boost::signals2::signal<void(SpritesheetRef)> SignalSpritesheetPlayComplete;
 	
 	virtual void update();
 	virtual void draw();
@@ -26,6 +30,12 @@ public:
 	void pause() { mIsPlaying = false; }
 	void setIsLoopingEnabled(bool isLooping) { mIsLooping = isLooping; }
 	void setFrameRate(float frameRate) { mFPS = frameRate; }
+	ci::Rectf getOriginalBounds();
+	ci::Rectf getFrameBounds();
+	SignalSpritesheetPlayComplete &getSignalPlayingComplete() { return mPlayCompleteSignal; }
+	int getCurrentFrame() { return mCurrentFrame; }
+	void drawOriginalBounds(bool isDrawOriginalBounds) { mIsDrawOriginalBounds = isDrawOriginalBounds; }
+	void drawFrameBounds(bool isDrawFrameBounds) { mIsDrawFrameBounds = isDrawFrameBounds; }
 	
 protected:
 	Spritesheet();
@@ -67,8 +77,14 @@ private:
 	float mFPS;
 	float mCurrentTime;
 	float mPreviousTime;
+	bool mIsDrawOriginalBounds;
+	bool mIsDrawFrameBounds;
+	
+	SignalSpritesheetPlayComplete mPlayCompleteSignal;
 	
 	void parseJSON(ci::JsonTree json);
 	void nextFrame();
+	void drawBounds();
+	void drawFrame();
 	
 };

@@ -22,6 +22,8 @@ Spritesheet::Spritesheet()
 , mFPS(24.f)
 , mPreviousTime(0.f)
 , mCurrentTime(0.f)
+, mIsDrawOriginalBounds(false)
+, mIsDrawFrameBounds(false)
 {}
 
 Spritesheet::~Spritesheet()
@@ -48,10 +50,8 @@ void Spritesheet::update()
 void Spritesheet::draw()
 {
 	ci::gl::pushMatrices();
-	FrameData frame = mFrames[mCurrentFrame];
-	ci::gl::enableAlphaBlending();
-	ci::gl::draw(mTexture, frame.frame, frame.spriteSourceSize);
-	ci::gl::disableAlphaBlending();
+	drawBounds();
+	drawFrame();
 	ci::gl::popMatrices();
 }
 
@@ -111,6 +111,11 @@ void Spritesheet::parseJSON(ci::JsonTree json)
 	
 }
 
+//
+//	Proceed to the next frame
+//	If it's not looping send a complete signal
+//
+
 void Spritesheet::nextFrame()
 {
 	if (mIsPlaying) {
@@ -118,7 +123,58 @@ void Spritesheet::nextFrame()
 		if (!mIsLooping) {
 			if (mCurrentFrame == mNumFrames - 1) {
 				mIsPlaying = false;
+				mPlayCompleteSignal(shared_from_this());
 			}
 		}
 	}
+}
+
+//
+//	Draw bounds for the original size or the current frame size
+//
+
+void Spritesheet::drawBounds()
+{
+	ci::gl::color(ci::Color(1,0,0));
+	
+	if (mIsDrawOriginalBounds) {
+		ci::gl::drawStrokedRect(getOriginalBounds());
+	}
+	
+	if (mIsDrawFrameBounds) {
+		ci::gl::drawStrokedRect(getFrameBounds());
+	}
+	
+	ci::gl::color(ci::Color(1,1,1));
+}
+
+//
+//	Draw the texture for the current frame
+//
+
+void Spritesheet::drawFrame()
+{
+	FrameData frame = mFrames[mCurrentFrame];
+	ci::gl::enableAlphaBlending();
+	ci::gl::draw(mTexture, frame.frame, frame.spriteSourceSize);
+	ci::gl::disableAlphaBlending();
+}
+
+//
+//	Get the original bounds for the frame
+//
+
+ci::Rectf Spritesheet::getOriginalBounds()
+{
+	ci::Rectf bounds(0, 0, mFrames[mCurrentFrame].sourceSize.x, mFrames[mCurrentFrame].sourceSize.y);
+	return bounds;
+}
+
+//
+//	Get the frame bounds for the current frame
+//
+
+ci::Rectf Spritesheet::getFrameBounds()
+{
+	return mFrames[mCurrentFrame].spriteSourceSize;
 }
