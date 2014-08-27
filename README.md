@@ -1,4 +1,3 @@
-Cinder-Spritesheet
-==================
-
-Spritesheet animation Cinder block
+Spritesheet
+======================================
+###Cinder spritesheet block
