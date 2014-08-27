@@ -31,7 +31,7 @@ Spritesheet::~Spritesheet()
 
 void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
 {
-	mFrameRate = 1000.f / mFPS;
+	setFrameRate(mFPS);
 	
 	mTexture = texture;
 	parseJSON(json);
@@ -177,4 +177,12 @@ ci::Rectf Spritesheet::getOriginalBounds()
 ci::Rectf Spritesheet::getFrameBounds()
 {
 	return mFrames[mCurrentFrame].spriteSourceSize;
+}
+
+//
+//	Set frames/second
+void Spritesheet::setFrameRate(float frameRate)
+{
+	mFPS = frameRate;
+	mFrameRate = 1000.f / mFPS;
 }

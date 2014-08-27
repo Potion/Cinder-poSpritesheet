@@ -29,7 +29,7 @@ public:
 	void play() { mIsPlaying = true; }
 	void pause() { mIsPlaying = false; }
 	void setIsLoopingEnabled(bool isLooping) { mIsLooping = isLooping; }
-	void setFrameRate(float frameRate) { mFPS = frameRate; }
+	void setFrameRate(float frameRate);
 	ci::Rectf getOriginalBounds();
 	ci::Rectf getFrameBounds();
 	SignalSpritesheetPlayComplete &getSignalPlayingComplete() { return mPlayCompleteSignal; }
