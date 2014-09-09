@@ -53,7 +53,7 @@ void Spritesheet::draw()
 	drawBounds();
 	drawFrame();
 	ci::gl::popMatrices();
-}
+}   
 
 //
 //	Parse the frame data json and store in data structures
