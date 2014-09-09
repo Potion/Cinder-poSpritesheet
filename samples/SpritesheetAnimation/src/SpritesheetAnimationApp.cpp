@@ -1,7 +1,7 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 
-#include "Spritesheet.h"
+#include "poSpritesheet.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -14,7 +14,7 @@ class SpritesheetAnimationApp : public AppNative {
 	void update();
 	void draw();
 	
-	SpritesheetRef mSpritesheet;
+	po::SpritesheetRef mSpritesheet;
 };
 
 void SpritesheetAnimationApp::setup()
@@ -23,7 +23,7 @@ void SpritesheetAnimationApp::setup()
 	
 	ci::gl::TextureRef texture = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("ducktest.png")));
 	ci::JsonTree json = ci::JsonTree(ci::app::loadAsset("ducktest.json"));
-	mSpritesheet = Spritesheet::create(texture, json);
+	mSpritesheet = po::Spritesheet::create(texture, json);
 	mSpritesheet->setIsLoopingEnabled(true);
 	mSpritesheet->play();
 }

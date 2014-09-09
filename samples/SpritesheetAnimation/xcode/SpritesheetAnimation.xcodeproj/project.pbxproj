@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,15 +12,12 @@
 		00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
 		00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
+		0576E63FBA3440FC84AFB37C /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = CABDCBC3AECF45B99522FDFD /* CinderApp.icns */; };
+		32E2D95919BF592B00DE4150 /* poSpritesheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32E2D95719BF592B00DE4150 /* poSpritesheet.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		955A899085D344829253AF4D /* Spritesheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 436CC6CF848A4DBC8491FAF1 /* Spritesheet.cpp */; };
-		CC975CE21E8E4AAEA97A265D /* Spritesheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA85644EA6D4EF9A51821AD /* Spritesheet.h */; };
-		675247B7387543B398518A22 /* SpritesheetAnimation_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A31C90E8493640DD9865075F /* SpritesheetAnimation_Prefix.pch */; };
-		0576E63FBA3440FC84AFB37C /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = CABDCBC3AECF45B99522FDFD /* CinderApp.icns */; };
-		CB8796D1E26947D2B5DA25A4 /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = 4479AFC162104D1393E22A95 /* Resources.h */; };
 		65FF2E1B983C44EC99D6B572 /* SpritesheetAnimationApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836BD67E4F71496B9E0AFA83 /* SpritesheetAnimationApp.cpp */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,16 +29,16 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32E2D95719BF592B00DE4150 /* poSpritesheet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = poSpritesheet.cpp; sourceTree = "<group>"; };
+		32E2D95819BF592B00DE4150 /* poSpritesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poSpritesheet.h; sourceTree = "<group>"; };
+		4479AFC162104D1393E22A95 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		5E6AF23ED71847798F942A64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		836BD67E4F71496B9E0AFA83 /* SpritesheetAnimationApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = SpritesheetAnimationApp.cpp; path = ../src/SpritesheetAnimationApp.cpp; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SpritesheetAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpritesheetAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		836BD67E4F71496B9E0AFA83 /* SpritesheetAnimationApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../src/SpritesheetAnimationApp.cpp; sourceTree = "<group>"; name = SpritesheetAnimationApp.cpp; };
-		4479AFC162104D1393E22A95 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../include/Resources.h; sourceTree = "<group>"; name = Resources.h; };
-		CABDCBC3AECF45B99522FDFD /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; name = CinderApp.icns; };
-		5E6AF23ED71847798F942A64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; name = Info.plist; };
-		A31C90E8493640DD9865075F /* SpritesheetAnimation_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SpritesheetAnimation_Prefix.pch; sourceTree = "<group>"; name = SpritesheetAnimation_Prefix.pch; };
-		3EA85644EA6D4EF9A51821AD /* Spritesheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../../../src/spritesheet/Spritesheet.h; sourceTree = "<group>"; name = Spritesheet.h; };
-		436CC6CF848A4DBC8491FAF1 /* Spritesheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../../../src/spritesheet/Spritesheet.cpp; sourceTree = "<group>"; name = Spritesheet.cpp; };
+		A31C90E8493640DD9865075F /* SpritesheetAnimation_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SpritesheetAnimation_Prefix.pch; sourceTree = "<group>"; };
+		CABDCBC3AECF45B99522FDFD /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				32E2D95619BF592B00DE4150 /* poSpritesheet */,
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,39 +121,6 @@
 			name = SpritesheetAnimation;
 			sourceTree = "<group>";
 		};
-		24882729093A4D5AAD43E664 /* spritesheet */ = {
-			isa = PBXGroup;
-			children = (
-				3EA85644EA6D4EF9A51821AD /* Spritesheet.h */,
-				436CC6CF848A4DBC8491FAF1 /* Spritesheet.cpp */,
-			);
-			name = spritesheet;
-			sourceTree = "<group>";
-		};
-		24EF3BAFA46C406AA3A19ECB /* src */ = {
-			isa = PBXGroup;
-			children = (
-				24882729093A4D5AAD43E664 /* spritesheet */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
-		89DB6933B4B74F6488812A2B /* Spritesheet */ = {
-			isa = PBXGroup;
-			children = (
-				24EF3BAFA46C406AA3A19ECB /* src */,
-			);
-			name = Spritesheet;
-			sourceTree = "<group>";
-		};
-		01B97315FEAEA392516A2CEA /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				89DB6933B4B74F6488812A2B /* Spritesheet */,
-			);
-			name = Blocks;
-			sourceTree = "<group>";
-		};
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +146,16 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		32E2D95619BF592B00DE4150 /* poSpritesheet */ = {
+			isa = PBXGroup;
+			children = (
+				32E2D95719BF592B00DE4150 /* poSpritesheet.cpp */,
+				32E2D95819BF592B00DE4150 /* poSpritesheet.h */,
+			);
+			name = poSpritesheet;
+			path = ../../../src/poSpritesheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +184,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SpritesheetAnimation" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -238,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FF2E1B983C44EC99D6B572 /* SpritesheetAnimationApp.cpp in Sources */,
-				955A899085D344829253AF4D /* Spritesheet.cpp in Sources */,
+				32E2D95919BF592B00DE4150 /* poSpritesheet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,31 +232,33 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = ../../../../../Cinder;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
 				PRODUCT_NAME = SpritesheetAnimation;
-				WRAPPER_EXTENSION = app;
 				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = ../../../../../Cinder;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -280,60 +266,54 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NDEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
 				PRODUCT_NAME = SpritesheetAnimation;
 				STRIP_INSTALLED_PRODUCT = YES;
-				WRAPPER_EXTENSION = app;
 				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = "../../../../..";
+				CINDER_PATH = ../../../../..;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = (
-					"\"$(CINDER_PATH)/include\" ../include",
-					../../../src/spritesheet,
-				);
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../../src/spritesheet";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = "../../../../..";
+				CINDER_PATH = ../../../../..;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = (
-					"\"$(CINDER_PATH)/include\" ../include",
-					../../../src/spritesheet,
-				);
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../../src/spritesheet";
 			};
 			name = Release;
 		};

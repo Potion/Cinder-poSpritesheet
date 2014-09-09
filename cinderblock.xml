@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cinder>
 	<block
-		name="Spritesheet" 
+		name="poSpritesheet" 
 		id="com.potiondesign.spritesheet"
-		git="git://github.com/Potion/Cinder-Spritesheet.git"
+		git="git://github.com/Potion/Cinder-poSpritesheet.git"
 		author="Potion Design"
 		summary="Potion's spritesheet block for Cinder"
 		license="modbsd"
@@ -14,15 +14,15 @@
 		<supports os="macosx" />
 		<supports os="msw" />
 
-		<header>src/spritesheet/Spritesheet.h</header>
-		<source>src/spritesheet/Spritesheet.cpp</source>
+		<header>src/poSpritesheet/poSpritesheet.h</header>
+		<source>src/poSpritesheet/poSpritesheet.cpp</source>
 
 		<platform os="macosx">
-			<includePath>src/spritesheet</includePath>
+			<includePath>src/poSpritesheet</includePath>
 		</platform>
 
 		<platform os="msw">
-			<includePath>src/spritesheet</includePath>
+			<includePath>src/poSpritesheet</includePath>
 		</platform>
 
 	</block>
