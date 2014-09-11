@@ -1,4 +1,4 @@
-//
+ //
 //  Spritesheet.h
 //  
 //
@@ -30,6 +30,7 @@ namespace po {
 		virtual void draw();
 		void play() { mIsPlaying = true; }
 		void pause() { mIsPlaying = false; }
+		void stop();
 		void setIsLoopingEnabled(bool isLooping) { mIsLooping = isLooping; }
 		void setFrameRate(float frameRate);
 		ci::Rectf getOriginalBounds();

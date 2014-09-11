@@ -189,4 +189,10 @@ namespace po {
 		mFrameRate = 1000.f / mFPS;
 	}
 	
+	void Spritesheet::stop()
+	{
+		mIsPlaying = false;
+		mCurrentFrame = 0;
+	}
+	
 }
