@@ -108,7 +108,7 @@ namespace po {
 			);
 			mFrames.push_back(frameData);
 			
-			ci::app::console() << frameData.filename << ", " << frameData.frame <<  ", " << frameData.spriteSourceSize << ", " << frameData.sourceSize << std::endl;
+//			ci::app::console() << frameData.filename << ", " << frameData.frame <<  ", " << frameData.spriteSourceSize << ", " << frameData.sourceSize << std::endl;
 		}
 		
 	}
