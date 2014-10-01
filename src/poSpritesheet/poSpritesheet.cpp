@@ -45,7 +45,10 @@ namespace po {
 	void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
 	{
 		setFrameRate(mFPS);
-		setupSpriteMap(texture, json);
+//		setupSpriteMap(texture, json);
+		
+		mTextures[0] = texture;
+		setupSpriteMap(0, json);
 	}
 	
 	//
@@ -57,8 +60,11 @@ namespace po {
 		
 		int counter = 0;
 		for (auto json : data) {
-			ci::gl::TextureRef texture = textures[counter];
-			setupSpriteMap(texture, json);
+			int textureID = counter;
+			mTextures[textureID] = textures[counter];
+//			ci::gl::TextureRef texture = textures[counter];
+//			setupSpriteMap(texture, json);
+			setupSpriteMap(textureID, json);
 			counter++;
 		}
 	}
@@ -66,14 +72,16 @@ namespace po {
 	//
 	//	Setup frame data and texture maps
 	//
-	void Spritesheet::setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json)
+//	void Spritesheet::setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json)
+	void Spritesheet::setupSpriteMap(int textureID, ci::JsonTree json)
 	{
 		// get all the frames in the json
 		for (auto frame : json.getChild("frames")) {
 			FrameData frameData = getFrameData(frame);
 			std::string frameKey = frameData.filename;
 			mFrameData[frameKey] = frameData;
-			mTextures[frameKey] = texture;
+//			mTextures[frameKey] = texture;
+			mTextureIDs[frameKey] = textureID;
 			mFrameOrder.push_back(frameKey);
 		}
 		
@@ -182,7 +190,11 @@ namespace po {
 	void Spritesheet::drawFrame()
 	{
 		ci::gl::enableAlphaBlending();
-		ci::gl::draw(mTextures[mCurrentFrameKey], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
+		
+//		ci::gl::draw(mTextures[mCurrentFrameKey], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
+		
+		ci::gl::draw(mTextures[mTextureIDs[mCurrentFrameKey]], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
+		
 		ci::gl::disableAlphaBlending();
 	}
 	

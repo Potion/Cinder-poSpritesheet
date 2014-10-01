@@ -72,10 +72,17 @@ namespace po {
 		std::map<std::string, FrameData> mFrameData;
 		
 		//
-		//	Texture map
-		//	key: sprite filename, value: texture ref
+		//	Texture ids
+		//	key: sprite filename, value: texture id
 		//
-		std::map<std::string, ci::gl::TextureRef> mTextures;
+//		std::map<std::string, ci::gl::TextureRef> mTextures;
+		std::map<std::string, int> mTextureIDs;
+		
+		//
+		//	Texture map
+		//	key: texture id, value: texture ref
+		//
+		std::map<int, ci::gl::TextureRef> mTextures;
 		
 		//
 		//	store the order frames should appear in
@@ -91,7 +98,8 @@ namespace po {
 		SignalSpritesheetPlayComplete mPlayCompleteSignal;
 		
 		FrameData getFrameData(ci::JsonTree json);
-		void setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json);
+//		void setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json);
+		void setupSpriteMap(int textureID, ci::JsonTree json);
 		void nextFrame();
 		void drawBounds();
 		void drawFrame();
