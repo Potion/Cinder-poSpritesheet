@@ -88,6 +88,7 @@ namespace po {
 		// sort the frame order alphabetically
 		std::sort(mFrameOrder.begin(), mFrameOrder.end());
 		mNumFrames = mFrameOrder.size();
+		mCurrentFrameKey = mFrameOrder[mCurrentFrame];
 	}
 	
 	//
