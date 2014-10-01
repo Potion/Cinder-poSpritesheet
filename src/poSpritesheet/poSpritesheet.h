@@ -11,6 +11,7 @@
 #include "cinder/gl/Texture.h"
 #include "cinder/Json.h"
 #include "cinder/Rect.h"
+#include "cinder/Area.h"
 
 namespace po {
 	
@@ -21,7 +22,11 @@ namespace po {
 	: public std::enable_shared_from_this<Spritesheet>
 	{
 	public:
+		//	Single texture spritesheet
 		static SpritesheetRef create(ci::gl::TextureRef texture, ci::JsonTree json);
+		//	Multipacked texture spritesheet
+		static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data);
+		
 		~Spritesheet();
 		
 		typedef boost::signals2::signal<void(SpritesheetRef)> SignalSpritesheetPlayComplete;
@@ -44,17 +49,9 @@ namespace po {
 		Spritesheet();
 		
 		void setup(ci::gl::TextureRef texture, ci::JsonTree json);
+		void setupMultipack(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data);
 		
 	private:
-		
-		// Sprite metadata
-		struct MetaData {
-			MetaData(){};
-			
-			std::string image;
-			ci::Vec2f size;
-			float scale;
-		};
 		
 		// Frame data structure
 		struct FrameData {
@@ -68,24 +65,33 @@ namespace po {
 			ci::Vec2f sourceSize;
 		};
 		
-		ci::gl::TextureRef mTexture;
-		MetaData mMetadata;
-		std::vector<FrameData> mFrames;
+		//
+		//	Frame data map
+		//	key: sprite filename, value: frame data object
+		//
+		std::map<std::string, FrameData> mFrameData;
 		
-		int mCurrentFrame;
-		int mNumFrames;
-		bool mIsPlaying;
-		bool mIsLooping;
-		float mFrameRate;
-		float mFPS;
-		float mCurrentTime;
-		float mPreviousTime;
-		bool mIsDrawOriginalBounds;
-		bool mIsDrawFrameBounds;
+		//
+		//	Texture map
+		//	key: sprite filename, value: texture ref
+		//
+		std::map<std::string, ci::gl::TextureRef> mTextures;
+		
+		//
+		//	store the order frames should appear in
+		//	this is sorted alphabetically
+		//
+		std::vector<std::string> mFrameOrder;
+		
+		int mCurrentFrame, mNumFrames;
+		std::string mCurrentFrameKey; // keep track of the current frame key
+		bool mIsPlaying, mIsLooping, mIsDrawOriginalBounds, mIsDrawFrameBounds;
+		float mFrameRate, mFPS, mCurrentTime, mPreviousTime;
 		
 		SignalSpritesheetPlayComplete mPlayCompleteSignal;
 		
-		void parseJSON(ci::JsonTree json);
+		FrameData getFrameData(ci::JsonTree json);
+		void setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json);
 		void nextFrame();
 		void drawBounds();
 		void drawFrame();

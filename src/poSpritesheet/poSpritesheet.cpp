@@ -17,6 +17,13 @@ namespace po {
 		return ref;
 	}
 	
+	SpritesheetRef Spritesheet::create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data)
+	{
+		SpritesheetRef ref(new Spritesheet());
+		ref->setupMultipack(textures, data);
+		return ref;
+	}
+	
 	Spritesheet::Spritesheet()
 	: mCurrentFrame(0)
 	, mIsPlaying(false)
@@ -26,19 +33,58 @@ namespace po {
 	, mCurrentTime(0.f)
 	, mIsDrawOriginalBounds(false)
 	, mIsDrawFrameBounds(false)
+	, mCurrentFrameKey("")
 	{}
 	
 	Spritesheet::~Spritesheet()
 	{}
 	
+	//
+	//	Single texture spritesheet setup
+	//
 	void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
 	{
 		setFrameRate(mFPS);
-		
-		mTexture = texture;
-		parseJSON(json);
+		setupSpriteMap(texture, json);
 	}
 	
+	//
+	//	Multipacked spritesheet setup
+	//
+	void Spritesheet::setupMultipack(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data)
+	{
+		setFrameRate(mFPS);
+		
+		int counter = 0;
+		for (auto json : data) {
+			ci::gl::TextureRef texture = textures[counter];
+			setupSpriteMap(texture, json);
+			counter++;
+		}
+	}
+	
+	//
+	//	Setup frame data and texture maps
+	//
+	void Spritesheet::setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json)
+	{
+		// get all the frames in the json
+		for (auto frame : json.getChild("frames")) {
+			FrameData frameData = getFrameData(frame);
+			std::string frameKey = frameData.filename;
+			mFrameData[frameKey] = frameData;
+			mTextures[frameKey] = texture;
+			mFrameOrder.push_back(frameKey);
+		}
+		
+		// sort the frame order alphabetically
+		std::sort(mFrameOrder.begin(), mFrameOrder.end());
+		mNumFrames = mFrameOrder.size();
+	}
+	
+	//
+	//	Update method should be called in the parent update method
+	//
 	void Spritesheet::update()
 	{
 		mCurrentTime = ci::app::getElapsedSeconds() * 1000;
@@ -49,6 +95,9 @@ namespace po {
 		}
 	}
 	
+	//
+	//	Draw method should be called from the parent draw method
+	//
 	void Spritesheet::draw()
 	{
 		ci::gl::pushMatrices();
@@ -58,70 +107,48 @@ namespace po {
 	}
 	
 	//
-	//	Parse the frame data json and store in data structures
+	//	Create framedata object from json
 	//
-	
-	void Spritesheet::parseJSON(ci::JsonTree json)
+	Spritesheet::FrameData Spritesheet::getFrameData(ci::JsonTree json)
 	{
-		//	ci::app::console() << json << std::endl;
+		FrameData frameData = FrameData();
+		frameData.filename = json.getChild("filename").getValue<std::string>();
+		frameData.frame = ci::Area(
+			json.getChild("frame").getChild("x").getValue<float>(),
+			json.getChild("frame").getChild("y").getValue<float>(),
+			json.getChild("frame").getChild("x").getValue<float>() +
+			json.getChild("frame").getChild("w").getValue<float>(),
+			json.getChild("frame").getChild("y").getValue<float>() +
+			json.getChild("frame").getChild("h").getValue<float>()
+		);
+		frameData.rotated = json.getChild("rotated").getValue<bool>();
+		frameData.trimmed = json.getChild("trimmed").getValue<bool>();
+		frameData.spriteSourceSize = ci::Rectf(
+			json.getChild("spriteSourceSize").getChild("x").getValue<float>(),
+			json.getChild("spriteSourceSize").getChild("y").getValue<float>(),
+			json.getChild("spriteSourceSize").getChild("x").getValue<float>() +
+			json.getChild("spriteSourceSize").getChild("w").getValue<float>(),
+			json.getChild("spriteSourceSize").getChild("y").getValue<float>() +
+			json.getChild("spriteSourceSize").getChild("h").getValue<float>()
+		);
+		frameData.sourceSize = ci::Vec2f(
+			json.getChild("sourceSize").getChild("w").getValue<float>(),
+			json.getChild("sourceSize").getChild("h").getValue<float>()
+		);
 		
-		ci::JsonTree metadata = json.getChild("meta");
-		ci::JsonTree framesJSON = json.getChild("frames");
-		
-		mNumFrames = framesJSON.getChildren().size();
-		
-		//	parse metadata
-		//	ci::app::console() << metadata << std::endl;
-		
-		mMetadata.image = metadata.getChild("image").getValue<std::string>();
-		mMetadata.size = ci::Vec2f(metadata.getChild("size").getChild("w").getValue<int>(), metadata.getChild("size").getChild("h").getValue<int>());
-		mMetadata.scale = metadata.getChild("scale").getValue<float>();
-		
-		//	ci::app::console() << mMetadata.image << ", " << mMetadata.size << ", " << mMetadata.scale << std::endl;
-		
-		//	parse frame data
-		for (ci::JsonTree::Iter frameJSON = framesJSON.begin(); frameJSON != framesJSON.end(); ++frameJSON) {
-			ci::JsonTree thisFrameJSON = *frameJSON;
-			//		ci::app::console() << thisFrameJSON << std::endl;
-			
-			FrameData frameData = FrameData();
-			frameData.filename = thisFrameJSON.getChild("filename").getValue<std::string>();
-			frameData.frame = ci::Area(
-									   thisFrameJSON.getChild("frame").getChild("x").getValue<float>(),
-									   thisFrameJSON.getChild("frame").getChild("y").getValue<float>(),
-									   thisFrameJSON.getChild("frame").getChild("x").getValue<float>() + thisFrameJSON.getChild("frame").getChild("w").getValue<float>(),
-									   thisFrameJSON.getChild("frame").getChild("y").getValue<float>() + thisFrameJSON.getChild("frame").getChild("h").getValue<float>()
-									   );
-			frameData.rotated = thisFrameJSON.getChild("rotated").getValue<bool>();
-			frameData.trimmed = thisFrameJSON.getChild("trimmed").getValue<bool>();
-			frameData.spriteSourceSize = ci::Rectf(
-			   thisFrameJSON.getChild("spriteSourceSize").getChild("x").getValue<float>(),
-			   thisFrameJSON.getChild("spriteSourceSize").getChild("y").getValue<float>(),
-			   thisFrameJSON.getChild("spriteSourceSize").getChild("x").getValue<float>() +
-			   thisFrameJSON.getChild("spriteSourceSize").getChild("w").getValue<float>(),
-			   thisFrameJSON.getChild("spriteSourceSize").getChild("y").getValue<float>() +
-			   thisFrameJSON.getChild("spriteSourceSize").getChild("h").getValue<float>()
-			);
-			frameData.sourceSize = ci::Vec2f(
-			 thisFrameJSON.getChild("sourceSize").getChild("w").getValue<float>(),
-			 thisFrameJSON.getChild("sourceSize").getChild("h").getValue<float>()
-			);
-			mFrames.push_back(frameData);
-			
-//			ci::app::console() << frameData.filename << ", " << frameData.frame <<  ", " << frameData.spriteSourceSize << ", " << frameData.sourceSize << std::endl;
-		}
-		
+		return frameData;
 	}
 	
 	//
 	//	Proceed to the next frame
 	//	If it's not looping send a complete signal
 	//
-	
 	void Spritesheet::nextFrame()
 	{
 		if (mIsPlaying) {
 			mCurrentFrame = (mCurrentFrame += 1) % mNumFrames;
+			mCurrentFrameKey = mFrameOrder[mCurrentFrame];
+//			ci::app::console() << "Spritesheet::drawFrame: " << mCurrentFrameKey << std::endl;
 			if (!mIsLooping) {
 				if (mCurrentFrame == mNumFrames - 1) {
 					mIsPlaying = false;
@@ -134,7 +161,6 @@ namespace po {
 	//
 	//	Draw bounds for the original size or the current frame size
 	//
-	
 	void Spritesheet::drawBounds()
 	{
 		ci::gl::color(ci::Color(1,0,0));
@@ -153,42 +179,42 @@ namespace po {
 	//
 	//	Draw the texture for the current frame
 	//
-	
 	void Spritesheet::drawFrame()
 	{
-		FrameData frame = mFrames[mCurrentFrame];
 		ci::gl::enableAlphaBlending();
-		ci::gl::draw(mTexture, frame.frame, frame.spriteSourceSize);
+		ci::gl::draw(mTextures[mCurrentFrameKey], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
 		ci::gl::disableAlphaBlending();
 	}
 	
 	//
 	//	Get the original bounds for the frame
 	//
-	
 	ci::Rectf Spritesheet::getOriginalBounds()
 	{
-		ci::Rectf bounds(0, 0, mFrames[mCurrentFrame].sourceSize.x, mFrames[mCurrentFrame].sourceSize.y);
+		ci::Rectf bounds(0, 0, mFrameData[mCurrentFrameKey].sourceSize.x, mFrameData[mCurrentFrameKey].sourceSize.y);
 		return bounds;
 	}
 	
 	//
 	//	Get the frame bounds for the current frame
 	//
-	
 	ci::Rectf Spritesheet::getFrameBounds()
 	{
-		return mFrames[mCurrentFrame].spriteSourceSize;
+		return mFrameData[mCurrentFrameKey].spriteSourceSize;
 	}
 	
 	//
 	//	Set frames/second
+	//
 	void Spritesheet::setFrameRate(float frameRate)
 	{
 		mFPS = frameRate;
 		mFrameRate = 1000.f / mFPS;
 	}
 	
+	//
+	//	Stop playback
+	//
 	void Spritesheet::stop()
 	{
 		mIsPlaying = false;
