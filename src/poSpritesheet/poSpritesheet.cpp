@@ -10,6 +10,9 @@
 
 namespace po {
 	
+	//------------------------------------------
+	//	Single texture spritesheet setup
+	//------------------------------------------
 	SpritesheetRef Spritesheet::create(ci::gl::TextureRef texture, ci::JsonTree json)
 	{
 		SpritesheetRef ref(new Spritesheet());
@@ -17,21 +20,39 @@ namespace po {
 		return ref;
 	}
 	
+	void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
+	{
+		mTextures[0] = texture;
+		setupSpriteMap(0, json);
+	}
+	
+	//------------------------------------------
+	//	Multipacked spritesheet setup
+	//------------------------------------------
+	void Spritesheet::setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data)
+	{
+		int counter = 0;
+		for (auto json : data) {
+			int textureID = counter;
+			mTextures[textureID] = textures[counter];
+			setupSpriteMap(textureID, json);
+			counter++;
+		}
+	}
+	
 	SpritesheetRef Spritesheet::create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data)
 	{
 		SpritesheetRef ref(new Spritesheet());
-		ref->setupMultipack(textures, data);
+		ref->setup(textures, data);
 		return ref;
 	}
 	
+	//------------------------------------------
+	//	Spritesheet
+	//------------------------------------------
+	
 	Spritesheet::Spritesheet()
-	: mCurrentFrame(0)
-	, mIsPlaying(false)
-	, mIsLooping(false)
-	, mFPS(12.f)
-	, mPreviousTime(0.f)
-	, mCurrentTime(0.f)
-	, mIsDrawOriginalBounds(false)
+	: mIsDrawOriginalBounds(false)
 	, mIsDrawFrameBounds(false)
 	, mCurrentFrameKey("")
 	{}
@@ -40,39 +61,8 @@ namespace po {
 	{}
 	
 	//
-	//	Single texture spritesheet setup
-	//
-	void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
-	{
-		setFrameRate(mFPS);
-//		setupSpriteMap(texture, json);
-		
-		mTextures[0] = texture;
-		setupSpriteMap(0, json);
-	}
-	
-	//
-	//	Multipacked spritesheet setup
-	//
-	void Spritesheet::setupMultipack(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data)
-	{
-		setFrameRate(mFPS);
-		
-		int counter = 0;
-		for (auto json : data) {
-			int textureID = counter;
-			mTextures[textureID] = textures[counter];
-//			ci::gl::TextureRef texture = textures[counter];
-//			setupSpriteMap(texture, json);
-			setupSpriteMap(textureID, json);
-			counter++;
-		}
-	}
-	
-	//
 	//	Setup frame data and texture maps
 	//
-//	void Spritesheet::setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json)
 	void Spritesheet::setupSpriteMap(int textureID, ci::JsonTree json)
 	{
 		// get all the frames in the json
@@ -80,7 +70,6 @@ namespace po {
 			FrameData frameData = getFrameData(frame);
 			std::string frameKey = frameData.filename;
 			mFrameData[frameKey] = frameData;
-//			mTextures[frameKey] = texture;
 			mTextureIDs[frameKey] = textureID;
 			mFrameOrder.push_back(frameKey);
 		}
@@ -88,31 +77,7 @@ namespace po {
 		// sort the frame order alphabetically
 		std::sort(mFrameOrder.begin(), mFrameOrder.end());
 		mNumFrames = mFrameOrder.size();
-		mCurrentFrameKey = mFrameOrder[mCurrentFrame];
-	}
-	
-	//
-	//	Update method should be called in the parent update method
-	//
-	void Spritesheet::update()
-	{
-		mCurrentTime = ci::app::getElapsedSeconds() * 1000;
-		float timeDiff = mCurrentTime - mPreviousTime;
-		if (timeDiff > mFrameRate) {
-			mPreviousTime = mCurrentTime;
-			nextFrame();
-		}
-	}
-	
-	//
-	//	Draw method should be called from the parent draw method
-	//
-	void Spritesheet::draw()
-	{
-		ci::gl::pushMatrices();
-		drawBounds();
-		drawFrame();
-		ci::gl::popMatrices();
+		mCurrentFrameKey = mFrameOrder[0];
 	}
 	
 	//
@@ -149,54 +114,32 @@ namespace po {
 	}
 	
 	//
-	//	Proceed to the next frame
-	//	If it's not looping send a complete signal
-	//
-	void Spritesheet::nextFrame()
-	{
-		if (mIsPlaying) {
-			mCurrentFrame = (mCurrentFrame += 1) % mNumFrames;
-			mCurrentFrameKey = mFrameOrder[mCurrentFrame];
-//			ci::app::console() << "Spritesheet::drawFrame: " << mCurrentFrameKey << std::endl;
-			if (!mIsLooping) {
-				if (mCurrentFrame == mNumFrames - 1) {
-					mIsPlaying = false;
-					mPlayCompleteSignal(shared_from_this());
-				}
-			}
-		}
-	}
-	
-	//
 	//	Draw bounds for the original size or the current frame size
 	//
 	void Spritesheet::drawBounds()
 	{
 		ci::gl::color(ci::Color(1,0,0));
-		
-		if (mIsDrawOriginalBounds) {
-			ci::gl::drawStrokedRect(getOriginalBounds());
-		}
-		
-		if (mIsDrawFrameBounds) {
-			ci::gl::drawStrokedRect(getFrameBounds());
-		}
-		
+		if (mIsDrawOriginalBounds) ci::gl::drawStrokedRect(getOriginalBounds());
+		if (mIsDrawFrameBounds) ci::gl::drawStrokedRect(getFrameBounds());
 		ci::gl::color(ci::Color(1,1,1));
 	}
 	
 	//
 	//	Draw the texture for the current frame
 	//
-	void Spritesheet::drawFrame()
+	void Spritesheet::drawFrame(int frameNum)
 	{
+		ci::gl::pushMatrices();
+		
+		drawBounds();
+		
 		ci::gl::enableAlphaBlending();
 		
-//		ci::gl::draw(mTextures[mCurrentFrameKey], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
-		
+		mCurrentFrameKey = mFrameOrder[frameNum];
 		ci::gl::draw(mTextures[mTextureIDs[mCurrentFrameKey]], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
 		
 		ci::gl::disableAlphaBlending();
+		ci::gl::popMatrices();
 	}
 	
 	//
@@ -214,24 +157,6 @@ namespace po {
 	ci::Rectf Spritesheet::getFrameBounds()
 	{
 		return mFrameData[mCurrentFrameKey].spriteSourceSize;
-	}
-	
-	//
-	//	Set frames/second
-	//
-	void Spritesheet::setFrameRate(float frameRate)
-	{
-		mFPS = frameRate;
-		mFrameRate = 1000.f / mFPS;
-	}
-	
-	//
-	//	Stop playback
-	//
-	void Spritesheet::stop()
-	{
-		mIsPlaying = false;
-		mCurrentFrame = 0;
 	}
 	
 }

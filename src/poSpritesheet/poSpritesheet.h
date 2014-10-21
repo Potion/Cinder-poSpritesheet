@@ -28,28 +28,20 @@ namespace po {
 		static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data);
 		
 		~Spritesheet();
-		
-		typedef boost::signals2::signal<void(SpritesheetRef)> SignalSpritesheetPlayComplete;
-		
-		virtual void update();
-		virtual void draw();
-		void play() { mIsPlaying = true; }
-		void pause() { mIsPlaying = false; }
-		void stop();
-		void setIsLoopingEnabled(bool isLooping) { mIsLooping = isLooping; }
-		void setFrameRate(float frameRate);
+
 		ci::Rectf getOriginalBounds();
 		ci::Rectf getFrameBounds();
-		SignalSpritesheetPlayComplete &getSignalPlayingComplete() { return mPlayCompleteSignal; }
-		int getCurrentFrame() { return mCurrentFrame; }
 		void drawOriginalBounds(bool isDrawOriginalBounds) { mIsDrawOriginalBounds = isDrawOriginalBounds; }
 		void drawFrameBounds(bool isDrawFrameBounds) { mIsDrawFrameBounds = isDrawFrameBounds; }
+		
+		int getNumFrames() { return mNumFrames; }
+		void drawFrame(int frameNum);
 		
 	protected:
 		Spritesheet();
 		
 		void setup(ci::gl::TextureRef texture, ci::JsonTree json);
-		void setupMultipack(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data);
+		void setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data);
 		
 	private:
 		
@@ -75,7 +67,6 @@ namespace po {
 		//	Texture ids
 		//	key: sprite filename, value: texture id
 		//
-//		std::map<std::string, ci::gl::TextureRef> mTextures;
 		std::map<std::string, int> mTextureIDs;
 		
 		//
@@ -90,19 +81,15 @@ namespace po {
 		//
 		std::vector<std::string> mFrameOrder;
 		
-		int mCurrentFrame, mNumFrames;
+		int mNumFrames;
 		std::string mCurrentFrameKey; // keep track of the current frame key
-		bool mIsPlaying, mIsLooping, mIsDrawOriginalBounds, mIsDrawFrameBounds;
-		float mFrameRate, mFPS, mCurrentTime, mPreviousTime;
-		
-		SignalSpritesheetPlayComplete mPlayCompleteSignal;
+
+		bool mIsDrawOriginalBounds, mIsDrawFrameBounds;
 		
 		FrameData getFrameData(ci::JsonTree json);
-//		void setupSpriteMap(ci::gl::TextureRef texture, ci::JsonTree json);
 		void setupSpriteMap(int textureID, ci::JsonTree json);
-		void nextFrame();
 		void drawBounds();
-		void drawFrame();
+		
 		
 	};
 	
