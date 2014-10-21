@@ -75,7 +75,7 @@ namespace po {
 			if (!mIsLooping) {
 				if (mCurrentFrame == mSpritesheet->getNumFrames() - 1) {
 					mIsPlaying = false;
-					mPlayCompleteSignal(mSpritesheet);
+					mPlayCompleteSignal(shared_from_this());
 				}
 			}
 		}

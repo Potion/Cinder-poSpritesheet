@@ -19,7 +19,6 @@ namespace po {
 	typedef std::shared_ptr<Spritesheet> SpritesheetRef;
 	
 	class Spritesheet
-	: public std::enable_shared_from_this<Spritesheet>
 	{
 	public:
 		//	Single texture spritesheet

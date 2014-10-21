@@ -19,13 +19,14 @@ namespace po {
 	typedef std::shared_ptr<SpritesheetAnimation> SpritesheetAnimationRef;
 	
 	class SpritesheetAnimation
+	: public std::enable_shared_from_this<SpritesheetAnimation>
 	{
 	public:
 		static SpritesheetAnimationRef create(SpritesheetRef spritesheet, float fps = 12.f);
 		
 		~SpritesheetAnimation();
 		
-		typedef boost::signals2::signal<void(SpritesheetRef)> SignalSpritesheetPlayComplete;
+		typedef boost::signals2::signal<void(SpritesheetAnimationRef)> SignalSpritesheetPlayComplete;
 		
 		virtual void update();
 		virtual void draw();
