@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <map>
+
 #include "cinder/gl/Texture.h"
 #include "cinder/Json.h"
 #include "cinder/Rect.h"

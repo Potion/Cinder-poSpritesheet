@@ -7,6 +7,7 @@
 //
 
 #include "poSpritesheetAnimation.h"
+#include "cinder/app/App.h"
 
 namespace po {
 	

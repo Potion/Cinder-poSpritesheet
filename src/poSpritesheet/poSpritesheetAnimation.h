@@ -10,6 +10,9 @@
 
 #include "poSpritesheet.h"
 
+#include "boost/signals2.hpp"
+
+
 namespace po {
 	
 	class Spritesheet;
