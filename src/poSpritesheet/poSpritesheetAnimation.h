@@ -38,6 +38,7 @@ namespace po {
 		void stop();
 		void setIsLoopingEnabled(bool isLooping) { mIsLooping = isLooping; }
 		void setFrameRate(float frameRate);
+		void setIsReverse(bool reverse);
 		
 		SignalSpritesheetPlayComplete &getSignalPlayingComplete() { return mPlayCompleteSignal; }
 		int getCurrentFrame() { return mCurrentFrame; }
@@ -51,8 +52,9 @@ namespace po {
 		SpritesheetRef mSpritesheet;
 		
 		int mCurrentFrame;
-		bool mIsPlaying, mIsLooping;
+		bool mIsPlaying, mIsLooping, mIsReverse;
 		float mFrameRate, mFPS, mCurrentTime, mPreviousTime;
+		int mLastFrame;
 		
 		SignalSpritesheetPlayComplete mPlayCompleteSignal;
 		

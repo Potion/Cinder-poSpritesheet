@@ -14,6 +14,7 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		0576E63FBA3440FC84AFB37C /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = CABDCBC3AECF45B99522FDFD /* CinderApp.icns */; };
 		32E2D95919BF592B00DE4150 /* poSpritesheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32E2D95719BF592B00DE4150 /* poSpritesheet.cpp */; };
+		32F02F371A2649C7003A6F86 /* poSpritesheetAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F02F351A2649C7003A6F86 /* poSpritesheetAnimation.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		65FF2E1B983C44EC99D6B572 /* SpritesheetAnimationApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836BD67E4F71496B9E0AFA83 /* SpritesheetAnimationApp.cpp */; };
@@ -31,6 +32,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32E2D95719BF592B00DE4150 /* poSpritesheet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = poSpritesheet.cpp; sourceTree = "<group>"; };
 		32E2D95819BF592B00DE4150 /* poSpritesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poSpritesheet.h; sourceTree = "<group>"; };
+		32F02F351A2649C7003A6F86 /* poSpritesheetAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = poSpritesheetAnimation.cpp; sourceTree = "<group>"; };
+		32F02F361A2649C7003A6F86 /* poSpritesheetAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poSpritesheetAnimation.h; sourceTree = "<group>"; };
 		4479AFC162104D1393E22A95 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
@@ -151,6 +154,8 @@
 		32E2D95619BF592B00DE4150 /* poSpritesheet */ = {
 			isa = PBXGroup;
 			children = (
+				32F02F351A2649C7003A6F86 /* poSpritesheetAnimation.cpp */,
+				32F02F361A2649C7003A6F86 /* poSpritesheetAnimation.h */,
 				32E2D95719BF592B00DE4150 /* poSpritesheet.cpp */,
 				32E2D95819BF592B00DE4150 /* poSpritesheet.h */,
 			);
@@ -222,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FF2E1B983C44EC99D6B572 /* SpritesheetAnimationApp.cpp in Sources */,
+				32F02F371A2649C7003A6F86 /* poSpritesheetAnimation.cpp in Sources */,
 				32E2D95919BF592B00DE4150 /* poSpritesheet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

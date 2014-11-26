@@ -25,6 +25,7 @@ namespace po {
 	, mFPS(12.f)
 	, mPreviousTime(0.f)
 	, mCurrentTime(0.f)
+	, mIsReverse(false)
 	{}
 	
 	SpritesheetAnimation::~SpritesheetAnimation()
@@ -34,6 +35,7 @@ namespace po {
 	{
 		mSpritesheet = spritesheet;
 		setFrameRate(fps);
+		mLastFrame = mSpritesheet->getNumFrames() - 1;
 	}
 	
 	//
@@ -72,9 +74,15 @@ namespace po {
 	void SpritesheetAnimation::nextFrame()
 	{
 		if (mIsPlaying) {
-			mCurrentFrame = (mCurrentFrame += 1) % mSpritesheet->getNumFrames();
+			
+			if (mIsReverse) {
+				mCurrentFrame = (mCurrentFrame -= 1) % mSpritesheet->getNumFrames();
+			} else {
+				mCurrentFrame = (mCurrentFrame += 1) % mSpritesheet->getNumFrames();
+			}
+			
 			if (!mIsLooping) {
-				if (mCurrentFrame == mSpritesheet->getNumFrames() - 1) {
+				if (mCurrentFrame == mLastFrame) {
 					mIsPlaying = false;
 					mPlayCompleteSignal(shared_from_this());
 				}
@@ -88,7 +96,24 @@ namespace po {
 	void SpritesheetAnimation::stop()
 	{
 		mIsPlaying = false;
-		mCurrentFrame = 0;
+		if (mIsReverse) {
+			mCurrentFrame = mSpritesheet->getNumFrames() - 1;
+		} else {
+			mCurrentFrame = 0;
+		}
+	}
+	
+	//
+	//	Play in reverse
+	//
+	void SpritesheetAnimation::setIsReverse(bool reverse)
+	{
+		mIsReverse = reverse;
+		if (mIsReverse) {
+			mLastFrame = 0;
+		} else {
+			mLastFrame = mSpritesheet->getNumFrames() - 1;
+		}
 	}
 	
 }
