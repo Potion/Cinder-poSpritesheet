@@ -110,6 +110,9 @@ namespace po {
 	{
 		mIsReverse = reverse;
 		if (mIsReverse) {
+            if (mCurrentFrame == 0) {
+                mCurrentFrame = mSpritesheet->getNumFrames() - 1;
+            }
 			mLastFrame = 0;
 		} else {
 			mLastFrame = mSpritesheet->getNumFrames() - 1;
