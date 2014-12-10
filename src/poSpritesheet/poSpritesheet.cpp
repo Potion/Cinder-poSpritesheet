@@ -121,7 +121,6 @@ namespace po {
 		ci::gl::color(ci::Color(1,0,0));
 		if (mIsDrawOriginalBounds) ci::gl::drawStrokedRect(getOriginalBounds());
 		if (mIsDrawFrameBounds) ci::gl::drawStrokedRect(getFrameBounds());
-		ci::gl::color(ci::Color(1,1,1));
 	}
 	
 	//
@@ -130,8 +129,6 @@ namespace po {
 	void Spritesheet::drawFrame(int frameNum)
 	{
 		ci::gl::pushMatrices();
-		
-		drawBounds();
 		
 		ci::gl::enableAlphaBlending();
 		
