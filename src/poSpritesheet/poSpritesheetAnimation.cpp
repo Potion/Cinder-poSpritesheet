@@ -46,7 +46,7 @@ namespace po {
 		mCurrentTime = ci::app::getElapsedSeconds() * 1000;
 		float timeDiff = mCurrentTime - mPreviousTime;
 		if (timeDiff > mFrameRate) {
-			mPreviousTime = mCurrentTime;
+			mPreviousTime = mCurrentTime - timeDiff;
 			nextFrame();
 		}
 	}
