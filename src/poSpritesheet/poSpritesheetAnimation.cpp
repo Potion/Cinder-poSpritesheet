@@ -43,12 +43,15 @@ namespace po {
 	//
 	void SpritesheetAnimation::update()
 	{
-		mCurrentTime = ci::app::getElapsedSeconds() * 1000;
-		float timeDiff = mCurrentTime - mPreviousTime;
-		if (timeDiff > mFrameRate) {
-			mPreviousTime = mCurrentTime - timeDiff;
-			nextFrame();
-		}
+        if(mIsPlaying) {
+            mCurrentTime = ci::app::getElapsedSeconds() * 1000;
+            float timeDiff = mCurrentTime - mPreviousTime;
+            if (timeDiff > mFrameRate) {
+                float over = timeDiff - mFrameRate;
+                mPreviousTime = mCurrentTime - over;
+                nextFrame();
+            }
+        }
 	}
 	
 	//
@@ -90,6 +93,15 @@ namespace po {
 		}
 	}
 	
+    //
+    //  Start Playing
+    //
+    void SpritesheetAnimation::play()
+    {
+        mPreviousTime = ci::app::getElapsedSeconds() * 1000.0f;
+        mIsPlaying = true;
+    }
+    
 	//
 	//	Stop playing
 	//

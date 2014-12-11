@@ -33,7 +33,7 @@ namespace po {
 		
 		virtual void update();
 		virtual void draw();
-		void play() { mIsPlaying = true; }
+        void play();
 		void pause() { mIsPlaying = false; }
 		void stop();
 		void setIsLoopingEnabled(bool isLooping) { mIsLooping = isLooping; }
