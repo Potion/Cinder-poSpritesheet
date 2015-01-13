@@ -12,6 +12,7 @@
 
 #include "cinder/gl/Texture.h"
 #include "cinder/Json.h"
+#include "cinder/Xml.h"
 #include "cinder/Rect.h"
 #include "cinder/Area.h"
 
@@ -24,10 +25,13 @@ namespace po {
 	{
 	public:
 		//	Single texture spritesheet
-		static SpritesheetRef create(ci::gl::TextureRef texture, ci::JsonTree json);
+        static SpritesheetRef create(ci::gl::TextureRef texture, ci::JsonTree json);
+        static SpritesheetRef create(ci::gl::TextureRef texture, ci::XmlTree xml);
+        
 		//	Multipacked texture spritesheet
-		static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data);
-		
+        static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data);
+        static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::XmlTree> &data);
+        
 		~Spritesheet();
 
 		ci::Rectf getOriginalBounds();
@@ -41,8 +45,13 @@ namespace po {
 	protected:
 		Spritesheet();
 		
+        //  Json
 		void setup(ci::gl::TextureRef texture, ci::JsonTree json);
-		void setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data);
+        void setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data);
+        
+        //  XML
+        void setup(ci::gl::TextureRef texture, ci::XmlTree json);
+        void setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::XmlTree> data);
 		
 	private:
 		
@@ -87,8 +96,14 @@ namespace po {
 
 		bool mIsDrawOriginalBounds, mIsDrawFrameBounds;
 		
-		FrameData getFrameData(ci::JsonTree json);
-		void setupSpriteMap(int textureID, ci::JsonTree json);
+        
+        
+        void setupSpriteMap(int textureID, ci::JsonTree json);
+        FrameData getFrameData(ci::JsonTree json);
+        
+        void setupSpriteMap(int textureID, ci::XmlTree xml);
+        FrameData getFrameData(ci::XmlTree xml);
+        
 		void drawBounds();
 		
 		

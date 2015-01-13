@@ -18,13 +18,28 @@ namespace po {
 		SpritesheetRef ref(new Spritesheet());
 		ref->setup(texture, json);
 		return ref;
-	}
+    }
+    
+    SpritesheetRef Spritesheet::create(ci::gl::TextureRef texture, ci::XmlTree xml)
+    {
+        SpritesheetRef ref(new Spritesheet());
+        ref->setup(texture, xml);
+        return ref;
+    }
+    
+    void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
+    {
+        mTextures[0] = texture;
+        setupSpriteMap(0, json);
+    }
 	
-	void Spritesheet::setup(ci::gl::TextureRef texture, ci::JsonTree json)
+	void Spritesheet::setup(ci::gl::TextureRef texture, ci::XmlTree xml)
 	{
 		mTextures[0] = texture;
-		setupSpriteMap(0, json);
+		setupSpriteMap(0, xml);
 	}
+    
+    
 	
 	//------------------------------------------
 	//	Multipacked spritesheet setup
@@ -60,6 +75,7 @@ namespace po {
 	Spritesheet::~Spritesheet()
 	{}
 	
+    
 	//
 	//	Setup frame data and texture maps
 	//
@@ -112,6 +128,62 @@ namespace po {
 		
 		return frameData;
 	}
+    
+    
+    //
+    //	Setup frame data and texture maps
+    //
+    void Spritesheet::setupSpriteMap(int textureID, ci::XmlTree xml)
+    {
+        // get all the frames in the json
+        for (auto frame : xml.getChild("TextureAtlas").getChild("sprite")) {
+            FrameData frameData = getFrameData(frame);
+            std::string frameKey = frameData.filename;
+            mFrameData[frameKey] = frameData;
+            mTextureIDs[frameKey] = textureID;
+            mFrameOrder.push_back(frameKey);
+        }
+        
+        // sort the frame order alphabetically
+        std::sort(mFrameOrder.begin(), mFrameOrder.end());
+        mNumFrames = mFrameOrder.size();
+        mCurrentFrameKey = mFrameOrder[0];
+    }
+    
+    
+    //
+    //	Create framedata object from json
+    //
+    Spritesheet::FrameData Spritesheet::getFrameData(ci::XmlTree xml)
+    {
+        FrameData frameData = FrameData();
+        frameData.filename = xml.getChild("filename").getValue<std::string>();
+        frameData.frame = ci::Area(
+                                   xml.getChild("x").getValue<float>(),
+                                   xml.getChild("y").getValue<float>(),
+                                   xml.getChild("x").getValue<float>() +
+                                   xml.getChild("w").getValue<float>(),
+                                   xml.getChild("y").getValue<float>() +
+                                   xml.getChild("h").getValue<float>()
+                                   );
+        frameData.rotated = xml.getChild("rotated").getValue<bool>();
+        frameData.trimmed = xml.getChild("trimmed").getValue<bool>();
+        frameData.spriteSourceSize = ci::Rectf(
+                                               xml.getChild("spriteSourceSize").getChild("x").getValue<float>(),
+                                               xml.getChild("spriteSourceSize").getChild("y").getValue<float>(),
+                                               xml.getChild("spriteSourceSize").getChild("x").getValue<float>() +
+                                               xml.getChild("spriteSourceSize").getChild("w").getValue<float>(),
+                                               xml.getChild("spriteSourceSize").getChild("y").getValue<float>() +
+                                               xml.getChild("spriteSourceSize").getChild("h").getValue<float>()
+                                               );
+        frameData.sourceSize = ci::Vec2f(
+                                         xml.getChild("sourceSize").getChild("w").getValue<float>(),
+                                         xml.getChild("sourceSize").getChild("h").getValue<float>()
+                                         );
+        
+        return frameData;
+    }
+    
 	
 	//
 	//	Draw bounds for the original size or the current frame size
