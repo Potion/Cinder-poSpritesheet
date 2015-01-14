@@ -135,8 +135,9 @@ namespace po {
     //
     void Spritesheet::setupSpriteMap(int textureID, ci::XmlTree xml)
     {
+        
         // get all the frames in the json
-        for (auto frame : xml.getChild("TextureAtlas").getChild("sprite")) {
+        for (auto frame : xml.getChild("TextureAtlas")) {
             FrameData frameData = getFrameData(frame);
             std::string frameKey = frameData.filename;
             mFrameData[frameKey] = frameData;
@@ -157,29 +158,45 @@ namespace po {
     Spritesheet::FrameData Spritesheet::getFrameData(ci::XmlTree xml)
     {
         FrameData frameData = FrameData();
-        frameData.filename = xml.getChild("filename").getValue<std::string>();
+        frameData.filename = xml.getAttribute("n").getValue<std::string>();
+        
+        //  Get Sprite size in spritesheet
         frameData.frame = ci::Area(
-                                   xml.getChild("x").getValue<float>(),
-                                   xml.getChild("y").getValue<float>(),
-                                   xml.getChild("x").getValue<float>() +
-                                   xml.getChild("w").getValue<float>(),
-                                   xml.getChild("y").getValue<float>() +
-                                   xml.getChild("h").getValue<float>()
-                                   );
-        frameData.rotated = xml.getChild("rotated").getValue<bool>();
-        frameData.trimmed = xml.getChild("trimmed").getValue<bool>();
-        frameData.spriteSourceSize = ci::Rectf(
-                                               xml.getChild("spriteSourceSize").getChild("x").getValue<float>(),
-                                               xml.getChild("spriteSourceSize").getChild("y").getValue<float>(),
-                                               xml.getChild("spriteSourceSize").getChild("x").getValue<float>() +
-                                               xml.getChild("spriteSourceSize").getChild("w").getValue<float>(),
-                                               xml.getChild("spriteSourceSize").getChild("y").getValue<float>() +
-                                               xml.getChild("spriteSourceSize").getChild("h").getValue<float>()
+                                               xml.getAttribute("x").getValue<float>(),
+                                               xml.getAttribute("y").getValue<float>(),
+                                               xml.getAttribute("x").getValue<float>() +
+                                               xml.getAttribute("w").getValue<float>(),
+                                               xml.getAttribute("y").getValue<float>() +
+                                               xml.getAttribute("h").getValue<float>()
                                                );
         frameData.sourceSize = ci::Vec2f(
-                                         xml.getChild("sourceSize").getChild("w").getValue<float>(),
-                                         xml.getChild("sourceSize").getChild("h").getValue<float>()
+                                         xml.getAttribute("w").getValue<float>(),
+                                         xml.getAttribute("h").getValue<float>()
                                          );
+        
+        //  Get rotation
+        if(xml.hasAttribute("r")) {
+            frameData.rotated = xml.getChild("r").getValue<bool>();
+        } else {
+            frameData.rotated = false;
+        }
+        
+        //  Get Trim/Actual size
+        if(xml.hasAttribute("oX")) {
+            frameData.trimmed = true;
+            frameData.spriteSourceSize = ci::Area(
+                                       xml.getAttribute("oX").getValue<float>(),
+                                       xml.getAttribute("oY").getValue<float>(),
+                                       xml.getAttribute("oX").getValue<float>() +
+                                       xml.getAttribute("oW").getValue<float>(),
+                                       xml.getAttribute("oY").getValue<float>() +
+                                       xml.getAttribute("oH").getValue<float>()
+                                       );
+        } else {
+            frameData.trimmed = false;
+            frameData.spriteSourceSize = ci::Area(0, 0, frameData.sourceSize.x, frameData.sourceSize.y);
+        }
+        
         
         return frameData;
     }
