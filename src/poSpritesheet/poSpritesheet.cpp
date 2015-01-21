@@ -54,8 +54,26 @@ namespace po {
 			counter++;
 		}
 	}
-	
+
+	void Spritesheet::setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::XmlTree> data)
+	{
+		int counter = 0;
+		for (auto xml : data) {
+			int textureID = counter;
+			mTextures[textureID] = textures[counter];
+			setupSpriteMap(textureID, xml);
+			counter++;
+		}
+	}
+
 	SpritesheetRef Spritesheet::create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data)
+	{
+		SpritesheetRef ref(new Spritesheet());
+		ref->setup(textures, data);
+		return ref;
+	}
+
+	SpritesheetRef Spritesheet::create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::XmlTree> &data)
 	{
 		SpritesheetRef ref(new Spritesheet());
 		ref->setup(textures, data);
