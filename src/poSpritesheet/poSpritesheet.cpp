@@ -235,7 +235,7 @@ namespace po {
 	//
 	void Spritesheet::drawFrame(int frameNum)
 	{
-		ci::gl::pushMatrices();
+		ci::gl::pushModelView();
 		
 		ci::gl::enableAlphaBlending();
 		
@@ -243,7 +243,7 @@ namespace po {
 		ci::gl::draw(mTextures[mTextureIDs[mCurrentFrameKey]], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
 		
 		ci::gl::disableAlphaBlending();
-		ci::gl::popMatrices();
+		ci::gl::popModelView();
 	}
 	
 	//
