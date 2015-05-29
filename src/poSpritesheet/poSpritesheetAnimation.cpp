@@ -1,11 +1,3 @@
-//
-//  poSpritesheetAnimation.cpp
-//  ForestFriendsLayer
-//
-//  Created by bruce on 10/20/14.
-//
-//
-
 #include "poSpritesheetAnimation.h"
 #include "cinder/app/App.h"
 

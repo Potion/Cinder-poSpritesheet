@@ -1,11 +1,3 @@
-//
-//  Spritesheet.cpp
-//  
-//
-//  Created by bruce on 8/26/14.
-//
-//
-
 #include "poSpritesheet.h"
 
 namespace po {
@@ -13,6 +5,7 @@ namespace po {
 	//------------------------------------------
 	//	Single texture spritesheet setup
 	//------------------------------------------
+	
 	SpritesheetRef Spritesheet::create(ci::gl::TextureRef texture, ci::JsonTree json)
 	{
 		SpritesheetRef ref(new Spritesheet());
@@ -39,11 +32,12 @@ namespace po {
 		setupSpriteMap(0, xml);
 	}
     
-    
+	
 	
 	//------------------------------------------
 	//	Multipacked spritesheet setup
 	//------------------------------------------
+	
 	void Spritesheet::setup(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> data)
 	{
 		int counter = 0;
@@ -79,6 +73,7 @@ namespace po {
 		ref->setup(textures, data);
 		return ref;
 	}
+	
 	
 	//------------------------------------------
 	//	Spritesheet
@@ -225,9 +220,15 @@ namespace po {
 	//
 	void Spritesheet::drawBounds()
 	{
-		ci::gl::color(ci::Color(1,0,0));
-		if (mIsDrawOriginalBounds) ci::gl::drawStrokedRect(getOriginalBounds());
-		if (mIsDrawFrameBounds) ci::gl::drawStrokedRect(getFrameBounds());
+		if (mIsDrawOriginalBounds) {
+			ci::gl::color(ci::Color(1,0,0));
+			ci::gl::drawStrokedRect(getOriginalBounds());
+		}
+		
+		if (mIsDrawFrameBounds) {
+			ci::gl::color(ci::Color(0,1,0));
+			ci::gl::drawStrokedRect(getFrameBounds());
+		}
 	}
 	
 	//
@@ -241,6 +242,8 @@ namespace po {
 		
 		mCurrentFrameKey = mFrameOrder[frameNum];
 		ci::gl::draw(mTextures[mTextureIDs[mCurrentFrameKey]], mFrameData[mCurrentFrameKey].frame, mFrameData[mCurrentFrameKey].spriteSourceSize);
+		
+		drawBounds();
 		
 		ci::gl::disableAlphaBlending();
 		ci::gl::popModelView();

@@ -1,17 +1,7 @@
-//
-//  poSpritesheetAnimation.h
-//  ForestFriendsLayer
-//
-//  Created by bruce on 10/20/14.
-//
-//
-
 #pragma once
 
 #include "poSpritesheet.h"
-
 #include "boost/signals2.hpp"
-
 
 namespace po {
 	
@@ -25,14 +15,17 @@ namespace po {
 	: public std::enable_shared_from_this<SpritesheetAnimation>
 	{
 	public:
+		//	Spritesheet to animate and frame rate
 		static SpritesheetAnimationRef create(SpritesheetRef spritesheet, float fps = 12.f);
 		
 		~SpritesheetAnimation();
 		
+		//	Playing complete signal, when not looped
 		typedef boost::signals2::signal<void(SpritesheetAnimationRef)> SignalSpritesheetPlayComplete;
 		
 		virtual void update();
 		virtual void draw();
+		
         void play();
 		void pause() { mIsPlaying = false; }
 		void stop();
@@ -51,13 +44,23 @@ namespace po {
 	private:
 		SpritesheetRef mSpritesheet;
 		
+		//	Keep track of frames
 		int mCurrentFrame;
-		bool mIsPlaying, mIsLooping, mIsReverse;
-		float mFrameRate, mFPS, mCurrentTime, mPreviousTime;
 		int mLastFrame;
+		
+		//	Keep track of state
+		bool mIsPlaying;
+		bool mIsLooping;
+		bool mIsReverse;
+		
+		float mFrameRate;
+		float mFPS;
+		float mCurrentTime;
+		float mPreviousTime;
 		
 		SignalSpritesheetPlayComplete mPlayCompleteSignal;
 		
+		//	Proceed to next frame
 		void nextFrame();
 		
 	};

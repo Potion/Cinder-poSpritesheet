@@ -1,15 +1,6 @@
- //
-//  Spritesheet.h
-//  
-//
-//  Created by bruce on 8/26/14.
-//
-//
-
 #pragma once
 
 #include <map>
-
 #include "cinder/gl/Texture.h"
 #include "cinder/Json.h"
 #include "cinder/Xml.h"
@@ -24,22 +15,30 @@ namespace po {
 	class Spritesheet
 	{
 	public:
-		//	Single texture spritesheet
+		//	Single texture spritesheet with json or xml
         static SpritesheetRef create(ci::gl::TextureRef texture, ci::JsonTree json);
         static SpritesheetRef create(ci::gl::TextureRef texture, ci::XmlTree xml);
         
-		//	Multipacked texture spritesheet
+		//	Multipacked texture spritesheet with json or xml
         static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::JsonTree> &data);
         static SpritesheetRef create(std::vector<ci::gl::TextureRef> &textures, std::vector<ci::XmlTree> &data);
         
 		~Spritesheet();
-
+		
+		//	Source size
 		ci::Rectf getOriginalBounds();
+		
+		//	Sprite source size
 		ci::Rectf getFrameBounds();
+		
+		//	Draw frame bounds
 		void drawOriginalBounds(bool isDrawOriginalBounds) { mIsDrawOriginalBounds = isDrawOriginalBounds; }
 		void drawFrameBounds(bool isDrawFrameBounds) { mIsDrawFrameBounds = isDrawFrameBounds; }
 		
+		//	Number of frame in the spritesheet
 		int getNumFrames() { return mNumFrames; }
+		
+		//	Draw frame number
 		void drawFrame(int frameNum);
 		
 	protected:
@@ -94,9 +93,8 @@ namespace po {
 		int mNumFrames;
 		std::string mCurrentFrameKey; // keep track of the current frame key
 
-		bool mIsDrawOriginalBounds, mIsDrawFrameBounds;
-		
-        
+		bool mIsDrawOriginalBounds;
+		bool mIsDrawFrameBounds;
         
         void setupSpriteMap(int textureID, ci::JsonTree json);
         FrameData getFrameData(ci::JsonTree json);
@@ -105,7 +103,6 @@ namespace po {
         FrameData getFrameData(ci::XmlTree xml);
         
 		void drawBounds();
-		
 		
 	};
 	
