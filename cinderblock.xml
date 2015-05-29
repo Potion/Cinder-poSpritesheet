@@ -17,6 +17,9 @@
 		<header>src/poSpritesheet/poSpritesheet.h</header>
 		<source>src/poSpritesheet/poSpritesheet.cpp</source>
 
+		<header>src/poSpritesheet/poSpritesheetAnimation.h</header>
+		<source>src/poSpritesheet/poSpritesheetAnimation.cpp</source>
+
 		<platform os="macosx">
 			<includePath>src/poSpritesheet</includePath>
 		</platform>
