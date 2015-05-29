@@ -6,11 +6,10 @@
 		git="git://github.com/Potion/Cinder-poSpritesheet.git"
 		author="Potion Design"
 		summary="Potion's spritesheet block for Cinder"
-		license="modbsd"
+		license="BSD"
 		version="0.1"
 		url="http://www.potiondesign.com"
 		>
-
 		<supports os="macosx" />
 		<supports os="msw" />
 
