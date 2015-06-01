@@ -23,6 +23,8 @@ Tested on OS X Yosemite and Windows 8.
 - **SpritesheetFrame:** draws a spritesheet frame based on mouse position
 - **SpritesheetAnimation:** animates spritesheet frames across the app window
 
+> [goblin](http://opengameart.org/content/goblin) by [Clint Bellanger](http://opengameart.org/users/clint-bellanger) used under [Creative Commons Attribution (CC-BY) 3.0 License](http://creativecommons.org/licenses/by/3.0/) / Scaled up from original.
+
 ## Getting started
 
 To draw a specific frame from the spritesheet:
