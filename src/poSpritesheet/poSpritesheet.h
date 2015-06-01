@@ -61,7 +61,7 @@ namespace po {
 		void drawOriginalBounds(bool isDrawOriginalBounds) { mIsDrawOriginalBounds = isDrawOriginalBounds; }
 		void drawFrameBounds(bool isDrawFrameBounds) { mIsDrawFrameBounds = isDrawFrameBounds; }
 		
-		//	Number of frame in the spritesheet
+		//	Number of frames in the spritesheet
 		int getNumFrames() { return mNumFrames; }
 		
 		//	Draw frame number
