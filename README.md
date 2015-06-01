@@ -29,7 +29,7 @@ Tested on OS X Yosemite and Windows 8.
 
 To draw a specific frame from the spritesheet:
 
-```
+```C++
 gl::TextureRef texture = gl::Texture::create(loadImage(loadAsset("goblin.png")));
 JsonTree json = JsonTree(loadAsset("goblin.json"));
 	
@@ -39,7 +39,7 @@ mSpritesheet->drawFrame(6);
 
 To animate the spritesheet:
 
-```
+```C++
 gl::TextureRef texture = gl::Texture::create(loadImage(loadAsset("charge.png")));
 JsonTree json = JsonTree(loadAsset("charge.json"));
 	
