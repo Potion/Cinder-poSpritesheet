@@ -34,7 +34,12 @@ gl::TextureRef texture = gl::Texture::create(loadImage(loadAsset("goblin.png")))
 JsonTree json = JsonTree(loadAsset("goblin.json"));
 	
 mSpritesheet = po::Spritesheet::create(texture, json);
+
+//	draw frame by number
 mSpritesheet->drawFrame(6);
+
+// frame by source filename
+mSpritesheet->drawFrame("0031.png");
 ```
 
 To animate the spritesheet:
