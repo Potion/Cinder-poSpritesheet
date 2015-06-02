@@ -275,6 +275,16 @@ namespace po {
 		ci::gl::popModelView();
 	}
 	
+	void Spritesheet::drawFrame(std::string frameName)
+	{
+		int framenum = std::find(mFrameOrder.begin(), mFrameOrder.end(), frameName) - mFrameOrder.begin();
+		if (framenum < mFrameOrder.size()) {
+			drawFrame(framenum);
+		} else {
+			ci::app::console() << "No frame named: " << frameName << std::endl;
+		}
+	}
+	
 	//
 	//	Get the original bounds for the frame
 	//
