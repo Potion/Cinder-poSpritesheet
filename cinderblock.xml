@@ -4,7 +4,7 @@
 		name="poSpritesheet" 
 		id="com.potiondesign.spritesheet"
 		git="git://github.com/Potion/Cinder-poSpritesheet.git"
-		author="Potion Design"
+		author="Potion Design LLC"
 		summary="Potion's spritesheet block for Cinder"
 		license="BSD"
 		version="0.1"
