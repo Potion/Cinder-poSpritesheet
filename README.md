@@ -1,6 +1,6 @@
 #Cinder-poSpritesheet
 
-[Potion's](http://www.potiondesign.com) spritesheet block for [Cinder](http://libcinder.org).
+[Potion's](http://www.potiondesign.com) spritesheet block for [Cinder](http://libcinder.org). Cinder-poSpritesheet is released under the [BSD New License](./License).
 
 The block consists of two classes:
 
