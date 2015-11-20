@@ -1,5 +1,6 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
+#include "cinder/Timeline.h"
 
 #include "poSpritesheet.h"
 #include "poSpritesheetAnimation.h"
@@ -17,38 +18,27 @@ class SpritesheetAnimationApp : public AppNative {
 	
 	po::SpritesheetRef mSpritesheet;
 	po::SpritesheetAnimationRef mSpritesheetAnimation;
-	bool mIsReverse;
-	void onAnimationFinished(po::SpritesheetAnimationRef animation);
+	
+	Anim<Vec2f> mPos;
+	Vec2f mEndPos;
 };
 
 void SpritesheetAnimationApp::setup()
 {
-	setWindowSize(1920, 1080);
+	setWindowSize(1024, 768);
 	
-//	ci::gl::TextureRef texture = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("ducktest.png")));
-//	ci::JsonTree json = ci::JsonTree(ci::app::loadAsset("ducktest.json"));
-//	mSpritesheet = po::Spritesheet::create(texture, json);
-//	
-//	mSpritesheetAnimation = po::SpritesheetAnimation::create(mSpritesheet);
-//	mSpritesheetAnimation->setIsLoopingEnabled(true);
-//	mSpritesheetAnimation->play();
+	mPos = Vec2f(1024, 0);
+	mEndPos = Vec2f(0, 768);
 	
-	mIsReverse = false;
+	gl::TextureRef texture = gl::Texture::create(loadImage(loadAsset("charge.png")));
+	JsonTree json = JsonTree(loadAsset("charge.json"));
 	
-	ci::gl::TextureRef texture = ci::gl::Texture::create(ci::loadImage(ci::app::loadAsset("grow_texture_0.png")));
-	ci::JsonTree json = ci::JsonTree(ci::app::loadAsset("grow_data_0.json"));
 	mSpritesheet = po::Spritesheet::create(texture, json);
-	
 	mSpritesheetAnimation = po::SpritesheetAnimation::create(mSpritesheet);
+	mSpritesheetAnimation->setIsLoopingEnabled(true);
 	mSpritesheetAnimation->play();
-	mSpritesheetAnimation->getSignalPlayingComplete().connect(std::bind(&SpritesheetAnimationApp::onAnimationFinished, this, std::placeholders::_1));
-}
-
-void SpritesheetAnimationApp::onAnimationFinished(po::SpritesheetAnimationRef animation)
-{
-	mIsReverse = !mIsReverse;
-	animation->setIsReverse(mIsReverse);
-	animation->play();
+	
+	timeline().apply(&mPos, mEndPos, 15.0f).loop();
 }
 
 void SpritesheetAnimationApp::mouseDown( MouseEvent event )
@@ -57,17 +47,17 @@ void SpritesheetAnimationApp::mouseDown( MouseEvent event )
 
 void SpritesheetAnimationApp::update()
 {
-//	mSpritesheet->update();
 	mSpritesheetAnimation->update();
 }
 
 void SpritesheetAnimationApp::draw()
 {
-	// clear out the window with black
-	gl::clear( Color( 0, 0, 0 ) );
-	
-//	mSpritesheet->draw();
+	gl::clear(Color::gray(0.2));
+	gl::pushModelView();
+	Vec2f val = mPos.value();
+	gl::translate(val.x - mSpritesheet->getOriginalBounds().getWidth()/2, val.y - mSpritesheet->getOriginalBounds().getHeight()/2);
 	mSpritesheetAnimation->draw();
+	gl::popModelView();
 }
 
 CINDER_APP_NATIVE( SpritesheetAnimationApp, RendererGl )
