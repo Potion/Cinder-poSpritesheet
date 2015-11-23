@@ -24,7 +24,7 @@ namespace po {
         typedef std::shared_ptr<Sprite> SpriteRef;
         
         class Sprite
-        : public po::Node
+        : public Node
         {
         public:
             struct SpriteDataJson {

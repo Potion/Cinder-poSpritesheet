@@ -157,7 +157,7 @@ namespace po {
         
         bool Sprite::pointInside(const ci::Vec2f &point, bool localize)
         {
-            ci::Vec2f pos = localize ? globalToLocal(point) : point;
+            ci::Vec2f pos = localize ? windowToLocal(point) : point;
             return getSpritesheet()->getFrameBounds().contains(pos);
         }
     }
