@@ -130,19 +130,16 @@ namespace po {
         void Sprite::draw()
         {		
             if (mIsKeyShaderEnabled) {
+				ci::gl::ScopedGlslProg keyShader( mShader );
                 mShader->bind();
     //			mShader->uniform("keyColor", Colors::KEY_COLOR);
                 mShader->uniform("replacementColor", mReplacementColor);
                 mShader->uniform("alpha", getAppliedAlpha());
+				mSpritesheetAnimation->draw();
 
             } else {
                 ci::gl::color(ci::ColorA(getFillColor(), getAppliedAlpha()));
-            }
-            
-            mSpritesheetAnimation->draw();
-            
-            if (mIsKeyShaderEnabled) {
-                mShader->unbind();
+				mSpritesheetAnimation->draw();
             }
         }
         
@@ -155,9 +152,9 @@ namespace po {
             mReplacementColor = color;
         }
         
-        bool Sprite::pointInside(const ci::Vec2f &point, bool localize)
+        bool Sprite::pointInside(const ci::vec2 &point, bool localize)
         {
-            ci::Vec2f pos = localize ? windowToLocal(point) : point;
+            ci::vec2 pos = localize ? windowToLocal(point) : point;
             return getSpritesheet()->getFrameBounds().contains(pos);
         }
     }

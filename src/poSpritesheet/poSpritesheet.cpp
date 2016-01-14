@@ -164,7 +164,7 @@ namespace po {
 			json.getChild("spriteSourceSize").getChild("y").getValue<float>() +
 			json.getChild("spriteSourceSize").getChild("h").getValue<float>()
 		);
-		frameData.sourceSize = ci::Vec2f(
+		frameData.sourceSize = ci::vec2(
 			json.getChild("sourceSize").getChild("w").getValue<float>(),
 			json.getChild("sourceSize").getChild("h").getValue<float>()
 		);
@@ -212,7 +212,7 @@ namespace po {
                                                xml.getAttribute("y").getValue<float>() +
                                                xml.getAttribute("h").getValue<float>()
                                                );
-        frameData.sourceSize = ci::Vec2f(
+        frameData.sourceSize = ci::vec2(
                                          xml.getAttribute("w").getValue<float>(),
                                          xml.getAttribute("h").getValue<float>()
                                          );

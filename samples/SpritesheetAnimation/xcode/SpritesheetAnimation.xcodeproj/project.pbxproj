@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,17 +12,16 @@
 		00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
 		00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
+		0CBF7A82467742C5A29439FE /* SpritesheetAnimationApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1A717E51C04B5DBD3B9AAF /* SpritesheetAnimationApp.cpp */; };
+		23A40E690806476AAB950409 /* poSpritesheetAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079C453E4E0741A6A0D8864B /* poSpritesheetAnimation.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		23A40E690806476AAB950409 /* poSpritesheetAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079C453E4E0741A6A0D8864B /* poSpritesheetAnimation.cpp */; };
-		42A13C592DF841A88AD36DFC /* poSpritesheetAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = D947688CE7FF411482382074 /* poSpritesheetAnimation.h */; };
+		AAF4EF861C485C0100D50D5A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF4EF851C485C0100D50D5A /* IOKit.framework */; };
+		AAF4EF881C485C0700D50D5A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF4EF871C485C0700D50D5A /* AVFoundation.framework */; };
+		AAF4EF8A1C485C3400D50D5A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF4EF891C485C3400D50D5A /* CoreMedia.framework */; };
 		B82E4A7C88B648AA8D1E4894 /* poSpritesheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1856897574A547F1A4B20BCE /* poSpritesheet.cpp */; };
-		C21482D509B448B2A6F192C2 /* poSpritesheet.h in Headers */ = {isa = PBXBuildFile; fileRef = B31B630883BA4A95AB67AA7F /* poSpritesheet.h */; };
-		C0261295D63F4729A37C2150 /* SpritesheetAnimation_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A05BE0A0BFC0458096E598A5 /* SpritesheetAnimation_Prefix.pch */; };
 		D9C25DA7E5C54797885E1B57 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = BEC8B1DAFF2B4A5AA998C198 /* CinderApp.icns */; };
-		5C29AF9EE1FA49438510D09A /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = E11FECA2CA644695B312D5FF /* Resources.h */; };
-		0CBF7A82467742C5A29439FE /* SpritesheetAnimationApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1A717E51C04B5DBD3B9AAF /* SpritesheetAnimationApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,21 +30,24 @@
 		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		079C453E4E0741A6A0D8864B /* poSpritesheetAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poSpritesheetAnimation.cpp; path = ../../../src/poSpritesheet/poSpritesheetAnimation.cpp; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1856897574A547F1A4B20BCE /* poSpritesheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = poSpritesheet.cpp; path = ../../../src/poSpritesheet/poSpritesheet.cpp; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3E6A9033D90E40BFBA281026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* SpritesheetAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpritesheetAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF1A717E51C04B5DBD3B9AAF /* SpritesheetAnimationApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../src/SpritesheetAnimationApp.cpp; sourceTree = "<group>"; name = SpritesheetAnimationApp.cpp; };
-		E11FECA2CA644695B312D5FF /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../include/Resources.h; sourceTree = "<group>"; name = Resources.h; };
-		BEC8B1DAFF2B4A5AA998C198 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; name = CinderApp.icns; };
-		3E6A9033D90E40BFBA281026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; name = Info.plist; };
-		A05BE0A0BFC0458096E598A5 /* SpritesheetAnimation_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SpritesheetAnimation_Prefix.pch; sourceTree = "<group>"; name = SpritesheetAnimation_Prefix.pch; };
-		B31B630883BA4A95AB67AA7F /* poSpritesheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../../../src/poSpritesheet/poSpritesheet.h; sourceTree = "<group>"; name = poSpritesheet.h; };
-		1856897574A547F1A4B20BCE /* poSpritesheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../../../src/poSpritesheet/poSpritesheet.cpp; sourceTree = "<group>"; name = poSpritesheet.cpp; };
-		D947688CE7FF411482382074 /* poSpritesheetAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../../../src/poSpritesheet/poSpritesheetAnimation.h; sourceTree = "<group>"; name = poSpritesheetAnimation.h; };
-		079C453E4E0741A6A0D8864B /* poSpritesheetAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../../../src/poSpritesheet/poSpritesheetAnimation.cpp; sourceTree = "<group>"; name = poSpritesheetAnimation.cpp; };
+		A05BE0A0BFC0458096E598A5 /* SpritesheetAnimation_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SpritesheetAnimation_Prefix.pch; sourceTree = "<group>"; };
+		AAF4EF851C485C0100D50D5A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		AAF4EF871C485C0700D50D5A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AAF4EF891C485C3400D50D5A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		AF1A717E51C04B5DBD3B9AAF /* SpritesheetAnimationApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = SpritesheetAnimationApp.cpp; path = ../src/SpritesheetAnimationApp.cpp; sourceTree = "<group>"; };
+		B31B630883BA4A95AB67AA7F /* poSpritesheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poSpritesheet.h; path = ../../../src/poSpritesheet/poSpritesheet.h; sourceTree = "<group>"; };
+		BEC8B1DAFF2B4A5AA998C198 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
+		D947688CE7FF411482382074 /* poSpritesheetAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = poSpritesheetAnimation.h; path = ../../../src/poSpritesheet/poSpritesheetAnimation.h; sourceTree = "<group>"; };
+		E11FECA2CA644695B312D5FF /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF4EF8A1C485C3400D50D5A /* CoreMedia.framework in Frameworks */,
+				AAF4EF881C485C0700D50D5A /* AVFoundation.framework in Frameworks */,
+				AAF4EF861C485C0100D50D5A /* IOKit.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */,
 				5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */,
@@ -67,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				F350D990A65740198F4E2601 /* poSpritesheet */,
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,41 +133,6 @@
 			name = SpritesheetAnimation;
 			sourceTree = "<group>";
 		};
-		F9752033E1EE46B095CC0A5A /* poSpritesheet */ = {
-			isa = PBXGroup;
-			children = (
-				B31B630883BA4A95AB67AA7F /* poSpritesheet.h */,
-				1856897574A547F1A4B20BCE /* poSpritesheet.cpp */,
-				D947688CE7FF411482382074 /* poSpritesheetAnimation.h */,
-				079C453E4E0741A6A0D8864B /* poSpritesheetAnimation.cpp */,
-			);
-			name = poSpritesheet;
-			sourceTree = "<group>";
-		};
-		A37A6941C406444E8A2C04B9 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F9752033E1EE46B095CC0A5A /* poSpritesheet */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
-		F350D990A65740198F4E2601 /* poSpritesheet */ = {
-			isa = PBXGroup;
-			children = (
-				A37A6941C406444E8A2C04B9 /* src */,
-			);
-			name = poSpritesheet;
-			sourceTree = "<group>";
-		};
-		01B97315FEAEA392516A2CEA /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				F350D990A65740198F4E2601 /* poSpritesheet */,
-			);
-			name = Blocks;
-			sourceTree = "<group>";
-		};
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,10 +154,40 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAF4EF891C485C3400D50D5A /* CoreMedia.framework */,
+				AAF4EF871C485C0700D50D5A /* AVFoundation.framework */,
+				AAF4EF851C485C0100D50D5A /* IOKit.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A37A6941C406444E8A2C04B9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F9752033E1EE46B095CC0A5A /* poSpritesheet */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		F350D990A65740198F4E2601 /* poSpritesheet */ = {
+			isa = PBXGroup;
+			children = (
+				A37A6941C406444E8A2C04B9 /* src */,
+			);
+			name = poSpritesheet;
+			sourceTree = "<group>";
+		};
+		F9752033E1EE46B095CC0A5A /* poSpritesheet */ = {
+			isa = PBXGroup;
+			children = (
+				B31B630883BA4A95AB67AA7F /* poSpritesheet.h */,
+				1856897574A547F1A4B20BCE /* poSpritesheet.cpp */,
+				D947688CE7FF411482382074 /* poSpritesheetAnimation.h */,
+				079C453E4E0741A6A0D8864B /* poSpritesheetAnimation.cpp */,
+			);
+			name = poSpritesheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +216,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SpritesheetAnimation" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -256,24 +266,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
 				PRODUCT_NAME = SpritesheetAnimation;
-				WRAPPER_EXTENSION = app;
 				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
@@ -287,60 +297,56 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NDEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SpritesheetAnimation_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
 				PRODUCT_NAME = SpritesheetAnimation;
 				STRIP_INSTALLED_PRODUCT = YES;
-				WRAPPER_EXTENSION = app;
 				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CINDER_PATH = ../../../../..;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = i386;
-				CINDER_PATH = "../../../../..";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = (
-					"\"$(CINDER_PATH)/include\" ../include",
-					../../../src/poSpritesheet,
-				);
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../../src/poSpritesheet";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CINDER_PATH = ../../../../..;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = i386;
-				CINDER_PATH = "../../../../..";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = (
-					"\"$(CINDER_PATH)/include\" ../include",
-					../../../src/poSpritesheet,
-				);
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../../src/poSpritesheet";
 			};
 			name = Release;
 		};

@@ -57,7 +57,7 @@ namespace po {
             ci::Rectf getBounds() { return mSpritesheet->getOriginalBounds(); }
             void setReplacementColor(ci::Color color);
             
-            bool pointInside(const ci::Vec2f &point, bool localize=true);
+            bool pointInside(const ci::vec2 &point, bool localize=true);
             
         protected:
             Sprite();

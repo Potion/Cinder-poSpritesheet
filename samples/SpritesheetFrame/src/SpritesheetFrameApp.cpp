@@ -1,12 +1,13 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/gl/gl.h"
 #include "poSpritesheet.h"
+#include "cinder/app/RendererGl.h"
 
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class SpritesheetFrameApp : public AppNative {
+class SpritesheetFrameApp : public App {
   public:
 	void setup();
 	void mouseDown( MouseEvent event );
@@ -67,4 +68,4 @@ void SpritesheetFrameApp::draw()
 	gl::popModelView();
 }
 
-CINDER_APP_NATIVE( SpritesheetFrameApp, RendererGl )
+CINDER_APP( SpritesheetFrameApp, RendererGl )
