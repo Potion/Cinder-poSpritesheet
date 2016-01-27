@@ -31,6 +31,7 @@
 #pragma once
 
 #include <map>
+#include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/Json.h"
 #include "cinder/Xml.h"
