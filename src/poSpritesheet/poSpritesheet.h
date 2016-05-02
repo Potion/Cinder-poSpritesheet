@@ -39,6 +39,8 @@
 #include "cinder/Rect.h"
 #include "cinder/Area.h"
 
+#include "cinder/gl/gl.h"
+#include "cinder/app/App.h"
 namespace po {
 	
 	class Spritesheet;
