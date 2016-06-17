@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Blocks">
+      <UniqueIdentifier>{20a89e15-674f-4071-89fb-8ab8ba9cfc06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Blocks\poScene">
+      <UniqueIdentifier>{d60cee09-8759-4a1f-bff8-30a465cf56ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Blocks\poScene\src">
+      <UniqueIdentifier>{3aee3cfa-fe7b-4589-b849-6cea967099aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Blocks\poSpritesheet">
+      <UniqueIdentifier>{c1ec6c7e-fe91-421d-84ca-302c80435648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Blocks\poSpritesheet\src">
+      <UniqueIdentifier>{9f1449aa-5f3e-4fd4-b72e-077c51e2fa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Blocks\poSpritesheet\src\poScene">
+      <UniqueIdentifier>{f81bce76-c8d7-499c-a3e3-009a46b30bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Blocks\poSpritesheet\src\poSpritesheet">
+      <UniqueIdentifier>{904e29f7-f3c6-41ca-85ef-cb00ba81192c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\SpritesheetFrameApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poEventCenter.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poEvents.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poImage.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poMatrixSet.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poNode.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poNodeContainer.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poScene.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poShape.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poTextBox.cpp">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\poScene\poSprite.cpp">
+      <Filter>Source Files\Blocks\poSpritesheet\src\poScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\poSpritesheet\poSpritesheet.cpp">
+      <Filter>Source Files\Blocks\poSpritesheet\src\poSpritesheet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\poSpritesheet\poSpritesheetAnimation.cpp">
+      <Filter>Source Files\Blocks\poSpritesheet\src\poSpritesheet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\CinderApp.icns">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poEventCenter.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poEvents.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poImage.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poMatrixSet.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poNode.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poNodeContainer.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poScene.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poShape.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poTextBox.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poTextureFit.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\INT\blocks\Cinder-poScene\src\poScene\poVideo.h">
+      <Filter>Source Files\Blocks\poScene\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\poScene\poSprite.h">
+      <Filter>Source Files\Blocks\poSpritesheet\src\poScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\poSpritesheet\poSpritesheet.h">
+      <Filter>Source Files\Blocks\poSpritesheet\src\poSpritesheet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\poSpritesheet\poSpritesheetAnimation.h">
+      <Filter>Source Files\Blocks\poSpritesheet\src\poSpritesheet</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

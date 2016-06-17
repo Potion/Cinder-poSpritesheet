@@ -31,12 +31,16 @@
 #pragma once
 
 #include <map>
+#include "cinder/app/App.h"
+#include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/Json.h"
 #include "cinder/Xml.h"
 #include "cinder/Rect.h"
 #include "cinder/Area.h"
 
+#include "cinder/gl/gl.h"
+#include "cinder/app/App.h"
 namespace po {
 	
 	class Spritesheet;
