@@ -107,7 +107,9 @@ namespace po {
 			}
 			
 			if (!mIsLooping) {
-				if (mCurrentFrame == mLastFrame) {
+				
+				int targetFrame = !mIsReverse ? mLastFrame : 0;
+				if ( mCurrentFrame == targetFrame ) {
 					mIsPlaying = false;
 					mPlayCompleteSignal(shared_from_this());
 				}

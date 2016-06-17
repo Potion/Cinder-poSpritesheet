@@ -65,6 +65,8 @@ namespace po {
 		
 		SignalSpritesheetPlayComplete &getSignalPlayingComplete() { return mPlayCompleteSignal; }
 		int getCurrentFrame() { return mCurrentFrame; }
+		bool getIsPlaying() { return mIsPlaying; }
+
 		
 	protected:
 		SpritesheetAnimation();
