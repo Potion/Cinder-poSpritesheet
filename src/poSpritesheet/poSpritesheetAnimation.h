@@ -66,6 +66,7 @@ namespace po {
 		SignalSpritesheetPlayComplete &getSignalPlayingComplete() { return mPlayCompleteSignal; }
 		int getCurrentFrame() { return mCurrentFrame; }
 		bool getIsPlaying() { return mIsPlaying; }
+		bool getIsReverse() { return mIsReverse; }
 
 		
 	protected:
