@@ -51,7 +51,7 @@ namespace po {
 		~SpritesheetAnimation();
 		
 		//	Playing complete signal, when not looped
-		typedef boost::signals2::signal<void(SpritesheetAnimationRef)> SignalSpritesheetPlayComplete;
+		typedef ci::signals::Signal<void(SpritesheetAnimationRef)> SignalSpritesheetPlayComplete;
 		
 		virtual void update();
 		virtual void draw();

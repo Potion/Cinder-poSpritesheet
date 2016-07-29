@@ -111,7 +111,7 @@ namespace po {
 				int targetFrame = !mIsReverse ? mLastFrame : 0;
 				if ( mCurrentFrame == targetFrame ) {
 					mIsPlaying = false;
-					mPlayCompleteSignal(shared_from_this());
+					mPlayCompleteSignal.emit(shared_from_this());
 				}
 			}
 		}
