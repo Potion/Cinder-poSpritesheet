@@ -148,19 +148,21 @@ namespace po
 	//
 	//	Play in reverse
 	//
-	void SpritesheetAnimation::setIsReverse( bool reverse )
+	void SpritesheetAnimation::setIsReverse( bool reverse, bool andSkipToStartFrame )
 	{
 		mIsReverse = reverse;
 
-		if( mIsReverse ) {
-			if( mCurrentFrame == 0 ) {
-				mCurrentFrame = mSpritesheet->getNumFrames() - 1;
-			}
+		if( andSkipToStartFrame ) {
+			if( mIsReverse ) {
+				if( mCurrentFrame == 0 ) {
+					mCurrentFrame = mSpritesheet->getNumFrames() - 1;
+				}
 
-			mLastFrame = 0;
-		}
-		else {
-			mLastFrame = mSpritesheet->getNumFrames() - 1;
+				mLastFrame = 0;
+			}
+			else {
+				mLastFrame = mSpritesheet->getNumFrames() - 1;
+			}
 		}
 	}
 

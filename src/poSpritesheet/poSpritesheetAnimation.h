@@ -61,7 +61,7 @@ namespace po
 			void stop();
 			void setIsLoopingEnabled( bool isLooping ) { mIsLooping = isLooping; }
 			void setFrameRate( float frameRate );
-			void setIsReverse( bool reverse );
+			void setIsReverse( bool reverse, bool andSkipToStartFrame = false );
 
 			SignalSpritesheetPlayComplete& getSignalPlayingComplete() { return mPlayCompleteSignal; }
 			int getCurrentFrame() { return mCurrentFrame; }
