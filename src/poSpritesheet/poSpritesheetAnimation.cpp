@@ -104,9 +104,13 @@ namespace po
 
 			if( mIsReverse ) {
 				mCurrentFrame = ( mCurrentFrame -= 1 ) % mSpritesheet->getNumFrames();
+
+				if( mCurrentFrame < 0 ) { mCurrentFrame = 0; }
 			}
 			else {
 				mCurrentFrame = ( mCurrentFrame += 1 ) % mSpritesheet->getNumFrames();
+
+				if( mCurrentFrame > mLastFrame ) { mCurrentFrame = mLastFrame; }
 			}
 
 			if( !mIsLooping ) {
