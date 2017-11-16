@@ -26,4 +26,18 @@
 xcuserdata/
 build/
 
+#VS2013 Noise
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.ncb
+*.sdf
+*.opensdf
+*.idb
+Debug/
+Release/
+ipch/
+
 DerivedData
