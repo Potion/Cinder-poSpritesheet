@@ -1,6 +1,12 @@
-#Cinder-poSpritesheet
+# Cinder-poSpritesheet
 
 [Potion's](http://www.potiondesign.com) spritesheet block for [Cinder](http://libcinder.org). Cinder-poSpritesheet is released under the [BSD New License](./LICENSE).
+
+## Using this Repo
+
+When pulling down the repo, `develop` is the latest branch, `master` is stable. If you're using in conjunction with [poScene](../Cinder-poScene), make sure you're on poScene v2. If you're on poScene v1, you can check out the `v1.0` tag. If you're on an old project with Cinder 0.8.6, you can checkout the `v0.8.6` tag.
+
+## Using the Block
 
 The block consists of two classes:
 
